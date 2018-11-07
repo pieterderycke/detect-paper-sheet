@@ -1,0 +1,32 @@
+swagger: "2.0"
+info:
+  description: This is the swagger file that goes with our server code
+  version: "1.0.0"
+  title: Swagger REST Article
+consumes:
+  - "application/json"
+produces:
+  - "application/json"
+
+basePath: "/api"
+
+# Paths supported by the server application
+paths:
+  /invoices:
+    post:
+      operationId: "invoices.create"
+      tags:
+        - "People"
+      summary: "Push a new invoice for processing to the server."
+      description: "Push a new invoice for processing"
+      consumes:
+        - multipart/form-data
+      parameters:
+        - name: image
+          description: The image of the invoice
+          in: formData
+          type: file
+          required: true
+      responses:
+        200:
+          description: "Successful processing of the invoice"
