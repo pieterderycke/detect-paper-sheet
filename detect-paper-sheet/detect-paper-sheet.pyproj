@@ -4,7 +4,7 @@
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>96b03701-cf3a-47ae-a6db-b60713a5d62f</ProjectGuid>
     <ProjectHome>.</ProjectHome>
-    <StartupFile>detectPaper.py</StartupFile>
+    <StartupFile>main.py</StartupFile>
     <SearchPath>
     </SearchPath>
     <WorkingDirectory>.</WorkingDirectory>
@@ -28,17 +28,20 @@
     <Compile Include="detectPaper.py">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="main.py">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="IMG_1629.JPG" />
+    <Content Include="IMG_1608.JPG" />
     <Content Include="IMG_1707.JPG" />
     <Content Include="MIm24.jpg" />
   </ItemGroup>
   <ItemGroup>
     <Interpreter Include="env\">
       <Id>env</Id>
-      <Version>3.6</Version>
-      <Description>env (Python 3.6 (64-bit))</Description>
+      <Version>3.7</Version>
+      <Description>env (Python 3.7 (64-bit))</Description>
       <InterpreterPath>Scripts\python.exe</InterpreterPath>
       <WindowsInterpreterPath>Scripts\pythonw.exe</WindowsInterpreterPath>
       <PathEnvironmentVariable>PYTHONPATH</PathEnvironmentVariable>
