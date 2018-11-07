@@ -1,8 +1,8 @@
 swagger: "2.0"
 info:
-  description: This is the swagger file that goes with our server code
+  description: An invoice scanning service.
   version: "1.0.0"
-  title: Swagger REST Article
+  title: Invoice API
 consumes:
   - "application/json"
 produces:
@@ -16,17 +16,72 @@ paths:
     post:
       operationId: "invoices.create"
       tags:
-        - "People"
+        - "Invoices"
       summary: "Push a new invoice for processing to the server."
       description: "Push a new invoice for processing"
       consumes:
-        - multipart/form-data
+        - application/json
       parameters:
-        - name: image
+        - name: invoice
           description: The image of the invoice
-          in: formData
-          type: file
+          in: body
           required: true
+          schema:
+            $ref: "#/definitions/InvoiceToScan"
       responses:
         200:
           description: "Successful processing of the invoice"
+          schema:
+            type: integer
+    get:
+      tags:
+        - "Invoices"
+      produces:
+        - application/json
+      responses:
+        200:
+          description: The list of invoices
+          schema:
+            type: array
+            items:
+              $ref: "#/definitions/Invoice"
+  /invoices/{id}:
+    get:
+      tags:
+          - "Invoices"
+      parameters:
+        - in: path
+          name: id
+          type: integer
+          required: true
+          description: The ID of the invoice to get.
+      responses:
+          200:
+            description: The invoice
+            schema:
+                $ref: "#/definitions/Invoice"
+definitions:
+  InvoiceToScan:
+    type: object
+    required:
+      - image
+    properties:
+      image:
+        type: string
+        description: The image of the invoice to scan base64 encoded.
+      language:
+        type: string
+      date:
+        type: string
+  Invoice:
+    type: object
+    required:
+      - id
+    properties:
+      id:
+        type: integer
+      text:
+        type: string
+      image:
+        type: string
+        description: The image of the invoice to scan base64 encoded.
