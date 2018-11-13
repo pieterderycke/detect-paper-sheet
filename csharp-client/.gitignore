@@ -1,0 +1,12 @@
+bin/
+obj/
+*.suo
+*.csproj.user
+TestResults/
+*.nupkg
+packages/*
+!packages/repositories.config
+*.zip
+*.userprefs
+.vs/
+project.lock.json

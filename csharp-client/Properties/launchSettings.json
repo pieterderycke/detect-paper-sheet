@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "csharp-client": {
+      "commandName": "Project",
+      "commandLineArgs": "\"..\\..\\..\\..\\IMG_1608.JPG\""
+    }
+  }
+}

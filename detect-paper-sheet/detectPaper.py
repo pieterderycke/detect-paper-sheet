@@ -1,8 +1,6 @@
 import cv2
-from matplotlib import pyplot as plt
 import numpy as np
 from contours import *
-import pytesseract
 
 def sharpenImage(img) :
     ret, img = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY)
@@ -19,6 +17,9 @@ def maskWhite(img) :
     return cv2.bitwise_and(img, img, mask= mask)
 
 def detectPaper(img) :
+    img = cv2.imdecode(img, cv2.IMREAD_COLOR) # cv2.IMREAD_COLOR in OpenCV 3.1
+
+
     maskResult = maskWhite(img)
 
     grayMaskResult = cv2.cvtColor(maskResult, cv2.COLOR_BGR2GRAY)
@@ -36,5 +37,3 @@ def detectPaper(img) :
     ret, thresholding = cv2.threshold(thresholding,0,255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
     
     return thresholding, transformedImage, grayMaskResult, contour
-
-

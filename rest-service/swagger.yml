@@ -14,7 +14,6 @@ basePath: "/api"
 paths:
   /invoices:
     post:
-      operationId: "invoices.create"
       tags:
         - "Invoices"
       summary: "Push a new invoice for processing to the server."
@@ -32,7 +31,7 @@ paths:
         200:
           description: "Successful processing of the invoice"
           schema:
-            type: integer
+            $ref: "#/definitions/Invoice"
     get:
       tags:
         - "Invoices"
@@ -84,4 +83,4 @@ definitions:
         type: string
       image:
         type: string
-        description: The image of the invoice to scan base64 encoded.
+        description: The image of the invoice base64 encoded.

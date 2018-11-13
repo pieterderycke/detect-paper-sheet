@@ -33,8 +33,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="IMG_1608.JPG" />
-    <Content Include="IMG_1707.JPG" />
     <Content Include="MIm24.jpg" />
   </ItemGroup>
   <ItemGroup>
