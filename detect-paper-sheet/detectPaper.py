@@ -2,6 +2,9 @@ import cv2
 import numpy as np
 from contours import *
 
+MODE_OPENCV_IMAGE = 0
+MODE_MEMORY_BUFFER = 1
+
 def sharpenImage(img) :
     ret, img = cv2.threshold(img, 127, 255, cv2.THRESH_BINARY)
     return img
@@ -16,9 +19,9 @@ def maskWhite(img) :
     mask = cv2.inRange(hsv, lower_white, upper_white)
     return cv2.bitwise_and(img, img, mask= mask)
 
-def detectPaper(img) :
-    img = cv2.imdecode(img, cv2.IMREAD_COLOR) # cv2.IMREAD_COLOR in OpenCV 3.1
-
+def detectPaper(img, mode = MODE_OPENCV_IMAGE) :
+    if(mode == MODE_MEMORY_BUFFER) :
+        img = cv2.imdecode(img, cv2.IMREAD_COLOR) # cv2.IMREAD_COLOR in OpenCV 3.1
 
     maskResult = maskWhite(img)
 
@@ -36,4 +39,7 @@ def detectPaper(img) :
     thresholding = cv2.GaussianBlur(thresholding,(5,5),0)
     ret, thresholding = cv2.threshold(thresholding,0,255, cv2.THRESH_BINARY + cv2.THRESH_OTSU)
     
-    return thresholding, transformedImage, grayMaskResult, contour
+    if(mode == MODE_MEMORY_BUFFER) :
+        return cv2.imencode(".jpg", thresholding)
+    else :
+        return thresholding, transformedImage, grayMaskResult, contour

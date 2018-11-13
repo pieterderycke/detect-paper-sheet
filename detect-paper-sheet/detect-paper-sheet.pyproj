@@ -33,9 +33,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="MIm24.jpg" />
-  </ItemGroup>
-  <ItemGroup>
     <Interpreter Include="env\">
       <Id>env</Id>
       <Version>3.7</Version>
