@@ -6,9 +6,12 @@ from os import environ
 from flask import render_template
 import connexion
 from connexion.resolver import RestyResolver
+import MongoEncoder
 
 # Create the application instance
 app = connexion.FlaskApp(__name__, specification_dir='./')
+
+#app.app.json_encoder = MongoEncoder
 
 # Read the swagger.yml file to configure the endpoints
 app.add_api('swagger.yml', resolver=RestyResolver('api'))

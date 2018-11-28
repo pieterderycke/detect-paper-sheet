@@ -29,6 +29,9 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="api\invoices.py" />
+    <Compile Include="MongoEncoder.py">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Include="runserver.py" />
   </ItemGroup>
   <ItemGroup>
